@@ -4,7 +4,9 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+	
 	<aop:aspectj-autoproxy />
+	
 	<bean id="propertyPlaceholderConfigurer"
 	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	<property name="locations">

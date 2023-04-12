@@ -23,29 +23,29 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.bookshop01">
-		<level value="trace" />
+		<level value="info" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="trace" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="trace"/>
+		<level value="info"/>
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="trace" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="trace" />
+		<level value="info" />
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="trace" />
+		<priority value="info" />
 		<appender-ref ref="console" />
 		<appender-ref ref="dailyFileAppender" />
 	</root>
