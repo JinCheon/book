@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bookshop01.common.base.BaseController;
 import com.bookshop01.goods.service.GoodsService;
 import com.bookshop01.goods.vo.GoodsVO;
+
 /* 
  * @EnableAspectJAutoProxy는 스프링 프레임워크에서 AOP를 적용하는 방법 중 하나입니다. 이 어노테이션을 사용하면 Spring AOP를 사용할 수 있으며, 프록시 기반 AOP를 지원하는 데 사용됩니다.
 @EnableAspectJAutoProxy 어노테이션은 다음과 같은 역할을 수행합니다.
@@ -33,16 +34,16 @@ public class MainController extends BaseController {
 	@Autowired
 	private GoodsService goodsService;
 
-	@RequestMapping(value= "/main/main.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = "/main/main.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session;
-		ModelAndView mav=new ModelAndView();
-		String viewName=(String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		String viewName = (String) request.getAttribute("viewName");
 		mav.setViewName(viewName);
-		
-		session=request.getSession();
+
+		session = request.getSession();
 		session.setAttribute("side_menu", "user");
-		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
+		Map<String, List<GoodsVO>> goodsMap = goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		return mav;
 	}

@@ -11,8 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bookshop01.member.vo.MemberVO;
 
 public interface AdminMemberController {
-	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	public ModelAndView deleteMember(HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+
+	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	public ModelAndView deleteMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

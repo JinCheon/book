@@ -27,34 +27,32 @@ import com.bookshop01.goods.vo.ImageFileVO;
 import com.bookshop01.member.vo.MemberVO;
 import com.bookshop01.order.vo.OrderVO;
 
-
 @Service("adminOrderService")
-@Transactional(propagation=Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED)
 public class AdminOrderServiceImpl implements AdminOrderService {
 	@Autowired
 	private AdminOrderDAO adminOrderDAO;
-	
-	public List<OrderVO>listNewOrder(Map condMap) throws Exception{
+
+	public List<OrderVO> listNewOrder(Map condMap) throws Exception {
 		return adminOrderDAO.selectNewOrderList(condMap);
 	}
+
 	@Override
-	public void  modifyDeliveryState(Map deliveryMap) throws Exception{
+	public void modifyDeliveryState(Map deliveryMap) throws Exception {
 		adminOrderDAO.updateDeliveryState(deliveryMap);
 	}
+
 	@Override
-	public Map orderDetail(int order_id) throws Exception{
-		Map orderMap=new HashMap();
-		ArrayList<OrderVO> orderList =adminOrderDAO.selectOrderDetail(order_id);
-		OrderVO deliveryInfo=(OrderVO)orderList.get(0);
-		String member_id=(String)deliveryInfo.getMember_id();
-		MemberVO orderer=adminOrderDAO.selectOrderer(member_id);
-		orderMap.put("orderList",orderList);
-		orderMap.put("deliveryInfo",deliveryInfo);
+	public Map orderDetail(int order_id) throws Exception {
+		Map orderMap = new HashMap();
+		ArrayList<OrderVO> orderList = adminOrderDAO.selectOrderDetail(order_id);
+		OrderVO deliveryInfo = (OrderVO) orderList.get(0);
+		String member_id = (String) deliveryInfo.getMember_id();
+		MemberVO orderer = adminOrderDAO.selectOrderer(member_id);
+		orderMap.put("orderList", orderList);
+		orderMap.put("deliveryInfo", deliveryInfo);
 		orderMap.put("orderer", orderer);
 		return orderMap;
 	}
-
-	
-	
 
 }

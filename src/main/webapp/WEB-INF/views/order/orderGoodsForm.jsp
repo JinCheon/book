@@ -630,7 +630,7 @@ function fn_process_pay_order(){
 									<input type="hidden" id="h_order_goods_qty"
 										name="h_order_goods_qty" value="${item.order_goods_qty}" />
 						</td>
-						<td><h2>${item.goods_sales_price}원(10% 할인)</h2></td>
+						<td><h2>${item.goods_sales_price}원(10%할인)</h2></td>
 						<td><h2>0원</h2></td>
 						<td><h2>${1500 *item.order_goods_qty}원</h2></td>
 						<td>
@@ -696,8 +696,8 @@ function fn_process_pay_order(){
 								<option value="019">019</option>
 						</select> - <input size="10px" type="text" id="hp2" name="hp2"
 							value="${orderer.hp2 }"> - <input size="10px" type="text"
-							id="hp3" name="hp3" value="${orderer.hp3 }"><br>
-						<br> <input type="hidden" id="h_hp1" name="h_hp1"
+							id="hp3" name="hp3" value="${orderer.hp3 }"><br> <br>
+							<input type="hidden" id="h_hp1" name="h_hp1"
 							value="${orderer.hp1 }" /> <input type="hidden" id="h_hp2"
 							name="h_hp2" value="${orderer.hp2 }" /> <input type="hidden"
 							id="h_hp3" name="h_hp3" value="${orderer.hp3 }" /> <c:set
@@ -780,8 +780,7 @@ function fn_process_pay_order(){
 			</table>
 		</div>
 		<div>
-			<br>
-			<br>
+			<br> <br>
 			<h2>주문고객</h2>
 			<table>
 				<tbody>
@@ -936,8 +935,7 @@ function fn_process_pay_order(){
 										<option value="BC">BC</option>
 										<option value="시티">시티</option>
 										<option value="NH농협">NH농협</option>
-								</select> <br>
-								<Br> <strong>할부 기간:<strong>
+								</select> <br> <Br> <strong>할부 기간:<strong>
 											&nbsp;&nbsp;&nbsp; <select id="card_pay_month"
 											name="card_pay_month">
 												<option value="일시불" selected>일시불</option>
@@ -1176,8 +1174,8 @@ KCP_Pay_Execute(form);
 }
 }
 </script>
-<script type="text/javascript"
-	src="https://pay.kcp.co.kr/plugin/payplus_web.jsp"></script>
-<script>
+				<script type="text/javascript"
+					src="https://pay.kcp.co.kr/plugin/payplus_web.jsp"></script>
+				<script>
 // jsf__pay();
 </script>

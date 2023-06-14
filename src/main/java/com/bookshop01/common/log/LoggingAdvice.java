@@ -18,57 +18,53 @@ public class LoggingAdvice {
 	private static final Logger logger = LoggerFactory.getLogger(LoggingAdvice.class);
 
 	// target 메서드의 파라미터등 정보를 출력합니다.
-	@Before("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.dao.*.*(..))")
+	@Before("execution(* com.bookshop01.*.service.*.*(..)) or " + "execution(* com.bookshop01.*.dao.*.*(..))")
 	public void startLog(JoinPoint jp) {
 
 		logger.info("-------------------------------------전");
 		logger.info("-------------------------------------");
 
-		// 전달되는 모든 파라미터들을 Object의 배열로 가져옵니다. 
+		// 전달되는 모든 파라미터들을 Object의 배열로 가져옵니다.
 		logger.info("1:" + Arrays.toString(jp.getArgs()));
 
-		//해당 Advice의 타입을 알아냅니다. 
+		// 해당 Advice의 타입을 알아냅니다.
 		logger.info("2:" + jp.getKind());
 
-		// 실행하는 대상 객체의 메소드에 대한 정보를 알아낼 때 사용합니다. 
+		// 실행하는 대상 객체의 메소드에 대한 정보를 알아낼 때 사용합니다.
 		logger.info("3:" + jp.getSignature().getName());
 
-		// target 객체를 알아낼 때 사용합니다. 
+		// target 객체를 알아낼 때 사용합니다.
 		logger.info("4:" + jp.getTarget().toString());
 
-		// Advice를 행하는 객체를 알아낼 때 사용합니다.  
+		// Advice를 행하는 객체를 알아낼 때 사용합니다.
 		logger.info("5:" + jp.getThis().toString());
 
 	}
-	
-	@After("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.*.dao.*.*(..))")
-	public void after(JoinPoint jp) { 
+
+	@After("execution(* com.bookshop01.*.service.*.*(..)) or " + "execution(* com.bookshop01.*.*.dao.*.*(..))")
+	public void after(JoinPoint jp) {
 		logger.info("-------------------------------------후");
 		logger.info("-------------------------------------");
 
 		// 전달되는 모든 파라미터들을 Object의 배열로 가져옵니다.
 		logger.info("1:" + Arrays.toString(jp.getArgs()));
 
-		// 해당 Advice의 타입을 알아냅니다. 
+		// 해당 Advice의 타입을 알아냅니다.
 		logger.info("2:" + jp.getKind());
 
 		// 실행하는 대상 객체의 메소드에 대한 정보를 알아낼 때 사용합니다.
 		logger.info("3:" + jp.getSignature().getName());
 
-		// target 객체를 알아낼 때 사용합니다. 
+		// target 객체를 알아낼 때 사용합니다.
 		logger.info("4:" + jp.getTarget().toString());
 
-		// Advice를 행하는 객체를 알아낼 때 사용합니다 
+		// Advice를 행하는 객체를 알아낼 때 사용합니다
 		logger.info("5:" + jp.getThis().toString());
-	
+
 	}
 
-
 	// target 메소드의 동작 시간을 측정합니다.
-	@Around("execution(* com.bookshop01.*.service.*.*(..)) or "
-			+ "execution(* com.bookshop01.*.dao.*.*(..))")
+	@Around("execution(* com.bookshop01.*.service.*.*(..)) or " + "execution(* com.bookshop01.*.dao.*.*(..))")
 	public Object timeLog(ProceedingJoinPoint pjp) throws Throwable {
 		long startTime = System.currentTimeMillis();
 		logger.info(Arrays.toString(pjp.getArgs()));
@@ -78,8 +74,8 @@ public class LoggingAdvice {
 
 		long endTime = System.currentTimeMillis();
 		// target 메소드의 동작 시간을 출력한다.
-		
-		logger.info(pjp.getSignature().getName() + " : " + "동작시간:" +(endTime - startTime)); 
+
+		logger.info(pjp.getSignature().getName() + " : " + "동작시간:" + (endTime - startTime));
 		logger.info("==============================");
 
 		// Around를 사용할 경우 반드시 Object를 리턴해야 합니다.

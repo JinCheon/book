@@ -16,45 +16,43 @@ import okhttp3.Response;
 
 @Service
 public class ApiService {
-	
-	public Map<String,Object> restApi(Map<String,String> map,String url) throws Exception {
-		
+
+	public Map<String, Object> restApi(Map<String, String> map, String url) throws Exception {
+
 		String param = "";
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		param = mapper.writeValueAsString(map);
-		
-		//여기는 고정 값
-		//OkHttp 사용
-		//OkHttp = REST API , HTTP 통신을 간편하게 사용할 수 있도록 만들어진 라이브러리
+
+		// 여기는 고정 값
+		// OkHttp 사용
+		// OkHttp = REST API , HTTP 통신을 간편하게 사용할 수 있도록 만들어진 라이브러리
 		OkHttpClient client = new OkHttpClient();
-		MediaType mediaType = MediaType.parse("application/json"); //application/json 이게 중요
-		RequestBody body = RequestBody.create(mediaType,param);
-		Request request = new Request.Builder().url(url)
-				.post(body).addHeader("cache-control", "no-cache").build();
-		//결과값 받기
+		MediaType mediaType = MediaType.parse("application/json"); // application/json 이게 중요
+		RequestBody body = RequestBody.create(mediaType, param);
+		Request request = new Request.Builder().url(url).post(body).addHeader("cache-control", "no-cache").build();
+		// 결과값 받기
 		Response response = client.newCall(request).execute();
 		String result = response.body().string();
-		
-		ObjectMapper resultMapper = new ObjectMapper(); 
-		Map<String,Object> resultMap = resultMapper.readValue(result, Map.class);
-		
+
+		ObjectMapper resultMapper = new ObjectMapper();
+		Map<String, Object> resultMap = resultMapper.readValue(result, Map.class);
+
 		return resultMap;
 	}
-	
-	
+
 	public String encrypt(String text) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(text.getBytes());
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update(text.getBytes());
 
-        return bytesToHex(md.digest());
-    }
+		return bytesToHex(md.digest());
+	}
 
-    private String bytesToHex(byte[] bytes) {
-        StringBuilder builder = new StringBuilder();
-        for (byte b : bytes) {
-            builder.append(String.format("%02x", b));
-        }
-        return builder.toString();
-    }
+	private String bytesToHex(byte[] bytes) {
+		StringBuilder builder = new StringBuilder();
+		for (byte b : bytes) {
+			builder.append(String.format("%02x", b));
+		}
+		return builder.toString();
+	}
 }

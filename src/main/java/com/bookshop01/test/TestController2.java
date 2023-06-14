@@ -11,14 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController2 {
 
-	
-	@RequestMapping(value= "/test/test2.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
-		ModelAndView mav=new ModelAndView();
-		
+	@RequestMapping(value = "/test/test2.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+
 		mav.setViewName("/test/order");
-		
+
 		return mav;
 	}
 }
